@@ -1,0 +1,26 @@
+{
+  "version": "0.0.1",
+  "git_url": "https://github.com/OCR-D/ocrd_vandalize",
+  "tools": {
+    "ocrd-vandalize": {
+      "executable": "ocrd-vandalize",
+      "description": "Demo processor to illustrate the OCR-D Python API",
+      "categories": [ "Post-Correction" ],
+      "steps": [ "recognition/font-identification" ],
+      "input_file_grp": ["INPUT"],
+      "output_file_grp": ["OUTPUT"],
+      "parameters": {
+        "text": {
+          "type": "string",
+          "description": "string to watermark image with",
+          "default": "OCR-D was here"
+        },
+        "font_color": {
+          "type": "string",
+          "default": "red",
+          "description": "color of the watermark text"
+        }
+      }
+    }
+  }
+}
