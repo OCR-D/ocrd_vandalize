@@ -8,7 +8,7 @@ help:
 	@echo "  Targets"
 	@echo ""
 	@echo "    deps         pip install -r requirements.txt"
-	@echo "    deps-dev     pip install -r requirements-test.txt"
+	@echo "    deps-test    pip install -r requirements-test.txt"
 	@echo "    install      pip install ."
 	@echo "    install-dev  pip install -e ."
 	@echo "    uninstall    pip uninstall $(PKG_NAME)"
@@ -26,7 +26,7 @@ deps:
 	pip install -r requirements.txt
 
 # pip install -r requirements-test.txt
-deps-dev:
+deps-test:
 	pip install -r requirements-test.txt
 
 
@@ -46,7 +46,7 @@ uninstall:
 assets: test/assets
 
 repo/assets:
-	git submodule --update init
+	git submodule update --init
 
 # Run tests
 test: repo/assets
@@ -54,3 +54,4 @@ test: repo/assets
 	cp -r repo/assets/data tests/assets
 	pytest tests
 
+.PHONY: assets deps deps-test install install-dev test uninstall
