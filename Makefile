@@ -46,7 +46,7 @@ uninstall:
 assets: test/assets
 
 repo/assets:
-	git submodule --update init
+	git submodule update --init
 
 # Run tests
 test: repo/assets
@@ -54,3 +54,4 @@ test: repo/assets
 	cp -r repo/assets/data tests/assets
 	pytest tests
 
+.PHONY: assets deps deps-dev install install-dev test uninstall
