@@ -54,4 +54,4 @@ test: repo/assets
 	cp -r repo/assets/data tests/assets
 	pytest tests
 
-.PHONY: assets deps deps-test install install-dev test uninstall
+.PHONY: assets deps deps-test install install-dev test uninstall repo/assets
