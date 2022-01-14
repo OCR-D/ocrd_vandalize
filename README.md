@@ -2,6 +2,8 @@
 
 > Demo processor to illustrate the OCR-D/core Python API
 
+[![image](https://circleci.com/gh/kba/ocrd_vandalize.svg?style=svg)](https://circleci.com/gh/kba/ocrd_vandalize)
+
 ## Description
 
 :TODO: write docs :)
