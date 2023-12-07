@@ -37,7 +37,8 @@ class OcrdVandalize(Processor):
         font = ImageFont.truetype(FONT, 100)
 
         width, height = im.size
-        textwidth, textheight = draw.textsize(text, font)
+        left, top, right, bottom = font.getbbox(text)
+        textwidth, textheight = right - left, bottom - top
         margin = 10
         x = (width - textwidth - margin) / 2
         y = (height - textheight - margin) / 2
