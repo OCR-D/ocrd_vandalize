@@ -33,7 +33,7 @@ def test_vandalize_image():
                                                      pageId='PHYS_0017'))
         assert len(file_before) == 1
         assert len(img_before) == 1
-        pcgts_before = parse(file_before[0].url)
+        pcgts_before = parse(file_before[0].local_filename)
         OcrdVandalize(workspace,
                       input_file_grp='OCR-D-GT-PAGE',
                       output_file_grp='VANDALIZED').process()
@@ -41,7 +41,7 @@ def test_vandalize_image():
                                                     pageId='PHYS_0017',
                                                     mimetype='application/vnd.prima.page+xml'))
         assert len(file_after) == 1
-        pcgts_after = parse(file_after[0].url)
+        pcgts_after = parse(file_after[0].local_filename)
         assert pcgts_after.get_Page().get_TextRegion()[0].get_TextLine()[0].get_TextEquiv()[0].Unicode != 'Berliniſche Monatsſchrift.'
         img_after = list(workspace.mets.find_files(fileGrp='VANDALIZED',
                                                    pageId='PHYS_0017',
@@ -50,5 +50,5 @@ def test_vandalize_image():
         altimg_after = pcgts_after.get_Page().get_AlternativeImage()
         assert len(altimg_after) == 1
         assert 'watermarked' in altimg_after[-1].get_comments()
-        assert img_after[0].url == altimg_after[-1].get_filename()
-        assert not cmp(img_before[0].url, img_after[0].url, shallow=False)
+        assert img_after[0].local_filename == Path(altimg_after[-1].get_filename())
+        assert not cmp(img_before[0].local_filename, img_after[0].local_filename, shallow=False)
