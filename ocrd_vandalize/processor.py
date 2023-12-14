@@ -65,7 +65,7 @@ class OcrdVandalize(Processor):
             log.info('Processing: %d / %s of %d', n, page_id, len(list(self.input_files)))
             pcgts = page_from_file(self.workspace.download_file(input_file))
             page = pcgts.get_Page()
-            pil_image, page_xywh, _ = self.workspace.image_from_page(page, page_id)
+            pil_image, page_xywh, _ = self.workspace.image_from_page(page, page_id, feature_filter='binarized')
             file_id = make_file_id(input_file, self.output_file_grp)
 
             # Watermark the image and add as an AlternativeImage
